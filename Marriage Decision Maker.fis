@@ -1,0 +1,92 @@
+[System]
+Name='Marriage Decision Maker'
+Type='mamdani'
+Version=2.0
+NumInputs=8
+NumOutputs=1
+NumRules=1
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Age'
+Range=[10 50]
+NumMFs=3
+MF1='Under_Age':'trapmf',[10 12 14 18]
+MF2='Young':'trapmf',[17 23 28 33]
+MF3='Old':'trapmf',[30 35 40 45]
+
+[Input2]
+Name='Height'
+Range=[122 213]
+NumMFs=3
+MF1='Short':'trapmf',[122 130 140 160]
+MF2='Medium':'trapmf',[155 158 170 175]
+MF3='Tall':'trapmf',[170 172 185 190]
+
+[Input3]
+Name='Weight'
+Range=[40 150]
+NumMFs=3
+MF1='Under_Weight':'trapmf',[40 43 47 52]
+MF2='Normal_Weight':'trapmf',[50 60 70 78]
+MF3='Obese':'trapmf',[75 90 120 150]
+
+[Input4]
+Name='Financial_Status'
+Range=[6000 200000]
+NumMFs=3
+MF1='Lower_Class':'gaussmf',[10000 20000]
+MF2='Middle_Class':'gaussmf',[20000 70000]
+MF3='Elite_Class':'gaussmf',[30000 150000]
+
+[Input5]
+Name='Orignality'
+Range=[0 1]
+NumMFs=4
+MF1='American':'gaussmf',[0.05 0.2]
+MF2='Asian':'gaussmf',[0.05 0.5]
+MF3='Arab':'gaussmf',[0.05 0.7]
+MF4='Other':'gaussmf',[0.05 0.9]
+
+[Input6]
+Name='Education_Level'
+Range=[0 1]
+NumMFs=3
+MF1='Secondary_School':'gaussmf',[0.1 0.2]
+MF2='College':'gaussmf',[0.1 0.5]
+MF3='Masters':'gaussmf',[0.1 0.8]
+
+[Input7]
+Name='Career'
+Range=[0 1]
+NumMFs=4
+MF1='Arts':'gaussmf',[0.1 0.2]
+MF2='Engineering':'gaussmf',[0.1 0.5]
+MF3='Medical':'gaussmf',[0.1 0.7]
+MF4='Other':'gaussmf',[0.1 0.9]
+
+[Input8]
+Name='Sexual_Orientation'
+Range=[0 1]
+NumMFs=4
+MF1='Straight':'gaussmf',[0.1 0.2]
+MF2='Gay':'gaussmf',[0.1 0.5]
+MF3='Lesbian':'gaussmf',[0.1 0.7]
+MF4='Other':'gaussmf',[0.1 0.9]
+
+[Output1]
+Name='Decision'
+Range=[0 1]
+NumMFs=5
+MF1='Very_Poor_Match':'trapmf',[0 0.1 0.15 0.2]
+MF2='Poor_Match':'trapmf',[0.18 0.22 0.26 0.35]
+MF3='Decent_Match':'trapmf',[0.32 0.4 0.45 0.55]
+MF4='Good_Match':'trapmf',[0.5 0.6 0.65 0.75]
+MF5='Excellent_Match':'trapmf',[0.7 0.8 0.9 1]
+
+[Rules]
+1 1 1 0 0 0 0 0, 1 (1) : 2
